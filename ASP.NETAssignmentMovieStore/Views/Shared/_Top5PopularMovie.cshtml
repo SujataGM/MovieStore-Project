@@ -1,0 +1,23 @@
+﻿@model ASP.NETAssignmentMovieStore.Models.Movies
+
+
+
+@{
+    var photoPath = (Model.CoverImageURL ?? "noimage.jpg");
+    <div class="card m-3 d-flex" style="border: 2px solid; color:darkblue">
+            <div class="card-header">
+                <h3>@Model.Title</h3>
+            </div>
+            <div class="card-body">
+                <img class="card-img-top img-thumbnail" src="@photoPath" asp-append-version="true">
+            </div>
+            <div class="card-footer text-center">
+                <a>@Model.Director</a> |
+                <a>@Model.ReleaseYear</a> |
+                <a>@Model.Price</a>
+                <br />
+                <br />
+                <a asp-controller="Movie" asp-action="AddToCart" asp-route-id="@Model.Id" class="btn btn-outline-primary"><i class="bi bi-cart-plus-fill"></i> &nbsp;&nbsp;Add To Cart</a>
+            </div>
+    </div>
+}

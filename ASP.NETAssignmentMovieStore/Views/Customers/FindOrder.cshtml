@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ASP.NETAssignmentMovieStore.Models.ViewModels.ListOfOrdersVM>
+
+<div class="container">
+    <form asp-controller="Customers" asp-action="FindOrder" method="get">
+        <div cass="row mt-3 form-group">
+            <p><b>Please enter the Email to get your orders</b></p>
+            <div class="col-3">
+                <label for="EmailAddress" class="col-sm-6 control-lable">Email Address </label>
+            </div>
+            <div class="col-5">
+                <input type="text" name="EmailAddress" id="EmailAddress" class="col-md-4 form-control" value="@ViewBag.EmailAddress" />
+            </div>
+            <div class="col-4 form-group">
+                <input type="submit" class="btn btn-primary form-group" value="Validate" style="width:100px;" />
+            </div>
+
+        </div>
+
+    </form>
+    <br />
+    @if (Model != null)
+    {
+        <div>
+            <table class="table" style="background-color:#B2FFFF">
+                <thead class="tablen">
+                    <tr>
+                        <th>
+                            Order ID
+                        </th>
+                        <th>
+                            Order Date
+                        </th>
+                        <th>
+                            Movie Details
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Sub Total
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.OrderId
+                            </td>
+                            <td>
+                                @item.OrderDate
+                            </td>
+                            <td><img src="~/@item.ImageUrl" style="width:80px;height:80px;" /></td>
+                            <td>
+                                @item.Title
+                            </td>
+                            <td>
+                                @item.Subtotal
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <hr />
+            <div class="row">
+                <div class="col-8"></div>
+                <div class="col-4">
+                    <label>Total : @Model.Sum(x => x.Subtotal)</label>
+                </div>
+            </div>
+        </div>
+    }
+</div>  

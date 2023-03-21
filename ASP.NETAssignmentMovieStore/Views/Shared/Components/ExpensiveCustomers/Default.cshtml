@@ -1,0 +1,13 @@
+﻿@using ASP.NETAssignmentMovieStore.Models.ViewModels
+@model MostExpenciveOrderVM
+
+ @if (Model != null)
+ {
+    <div class="card m-3 d-flex" style="width:250px;background-color:aliceblue">
+        <div class="card-body">
+        <p><b style="color:darkblue">Name</b>      : @Model.CustomerName</p>
+        <p><b style="color:darkblue">Date </b>     : @Model.OrderDate</p>
+        <p><b style="color:darkblue">Order Sum</b> : @Model.OrderSum</p>
+        </div>
+    </div>
+ }

@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-ASP.NETAssignmentMovieStore-CDBFA0EB-48D3-4E7A-B3E2-0A8F6A0BEC2D</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\css\Video\**" />
+    <Content Remove="wwwroot\css\Video\**" />
+    <EmbeddedResource Remove="wwwroot\css\Video\**" />
+    <None Remove="wwwroot\css\Video\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\content\images\carousol.jpg.jpg" />
+    <Content Remove="wwwroot\images\c5a159a9-76b2-4fb6-8f77-033da0a9c500_Avatar_%282009_film%29_poster.jpg" />
+    <Content Remove="wwwroot\images\images %281%29.jfif" />
+    <Content Remove="wwwroot\images\images %282%29.jfif" />
+    <Content Remove="wwwroot\images\images %283%29.jfif" />
+    <Content Remove="wwwroot\images\images.jfif" />
+    <Content Remove="wwwroot\images\images1.jfif" />
+    <Content Remove="wwwroot\images\wp6198758-english-movie-wallpapers.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
+    <PackageReference Include="PagedList.Core.Mvc" Version="3.0.0" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+    <PackageReference Include="ReflectionIT.Blazor.Paging" Version="2.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>

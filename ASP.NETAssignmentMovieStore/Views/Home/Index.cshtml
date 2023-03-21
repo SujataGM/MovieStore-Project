@@ -1,0 +1,140 @@
+﻿@model IEnumerable<ASP.NETAssignmentMovieStore.Models.Movies>
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <video autoplay loop muted plays-inline class="bg-video">
+                    <source src="~/images/transporter%203-skill%20of%20driving.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="carousel-item">
+                <video autoplay loop muted plays-inline class="bg-video">
+                    <source src="~/images/operation%20fortune%20trailer%20(2022)%20aubrey%20plaza,%20jason%20statham%20action%20movie.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="carousel-item">
+                <video autoplay loop muted plays-inline class="bg-video">
+                    <source src="~/images/james%20bond%20007%20-%20warner%20broas%20-%20official%20trailer%20_%20trailer%202022.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <br />
+    <br />
+</div>
+<div class="viewpage">
+    <div class="row m-5">
+        <h2> MoviesList</h2>
+        <hr />
+        <div class="row g-2">
+            @foreach (var item in Model.OrderByDescending(x => x.Id).Take(12).ToList())
+            {
+                <div class="col-12 col-md-6 col-lg-3">
+                    <partial name="_LatestMoviesPartial" model="item">
+                </div>
+            }
+        </div>
+    
+    <div class="row m-5">
+        <h2>Popular Movies</h2>
+        <hr />    
+        <div class="row g-2" >
+            @foreach (var item in Model.OrderByDescending(OrderRows => OrderRows.OrderRows.Count)
+            .ThenBy(m => m.Price)
+            .Take(4)
+            .Select(m => new Movies
+            {
+                CoverImageURL = m.CoverImageURL,
+                Title = m.Title,
+                ReleaseYear = m.ReleaseYear,
+                Price = m.Price,
+                Director = m.Director,
+                Id = m.Id
+
+            }).ToList())
+            {
+                <div class="col-12 col-md-6 col-lg-3">
+                    <partial name="_Top5PopularMovies" model="item">
+                </div>
+
+            }               
+        </div>
+        <br/>
+         <br/>
+        <div class="row m-2">
+            <h2>Latest Movies</h2>
+            <hr />
+            <div class="row g-2">
+                @foreach (var item in Model.OrderByDescending(x => x.ReleaseYear).Take(4).ToList())
+                {
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <partial name="_LatestMoviesPartial" model="item">
+                    </div>
+                }
+            </div>
+
+        </div>
+        <br />
+        <br />
+        <div class="row m-2">
+            <h2>Oldest Movies</h2>
+            <hr />
+            <div class="row g-2">
+                @foreach (var item in Model.OrderBy(x => x.ReleaseYear).Take(4).ToList())
+                {
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <partial name="_OldestMoviesPartial" model="item">
+                    </div>
+                }
+            </div>
+        </div>
+        <br />
+        <br />        
+        <div class="row m-2">
+            <h2>Cheapest Movies</h2>
+            <hr />
+            <div class="row g-2">
+                @foreach (var item in Model.OrderBy(x => x.Price).Take(4).ToList())
+                {
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <partial name="_CheapestMoviesPartial" model="item">
+                    </div>
+                }
+            </div>
+        </div>     
+
+       
+        <br />
+        <br />
+        <div class="row m-2">
+            <h2>Regular Customers</h2>
+            <hr />
+            <div class="row g-2">
+                @*@foreach (var item in Model)
+                {*@
+                    <div class="col-md-2">
+                    @await Component.InvokeAsync("ExpensiveCustomers")
+                    </div>
+                @*}*@
+            </div>
+        </div>   
+
+    </div>
+</div>
+
+

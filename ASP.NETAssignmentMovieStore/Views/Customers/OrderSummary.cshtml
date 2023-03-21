@@ -1,0 +1,116 @@
+@using Microsoft.AspNetCore.Http;
+
+@model ASP.NETAssignmentMovieStore.Models.Cart
+
+<div class="container">
+    <div class="row">
+        <h2>Order details</h2>
+    </div>
+</div>
+<hr />
+<table class="table border border-3 rounded rounded-3" style="border: 2px solid">
+    <thead>
+        <tr>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Customer Id
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @ViewBag.OrderDate
+            </td>
+            <td>
+                @ViewBag.CustomerId
+            </td>
+            <td>
+                @ViewBag.CustomerName
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Movie Details
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Sub Total
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movieids)
+        {
+            <tr>
+                <td><img src="~/@item.ImageUrl" style="width:80px;height:80px;" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>                    
+                    @Html.DisplayFor(modelItem => item.Quantity)                 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTotal)
+                </td>
+
+                <td>
+                    <a asp-controller="Movie" asp-action="DeleteFromTheCart" asp-route-id="@item.MoviesId" class="btn btn-danger">Remove</a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+<hr />
+<div class="row">
+    <div class="col-8"></div>
+    <div class="col-4">
+        <label>Total : @Model.Movieids.Sum(x => x.SubTotal)</label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-8"></div>
+    <div class="col-4 align-items-end" >
+        <a asp-controller="Customers" asp-action="Checkout" class="btn btn-primary">Place Order</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

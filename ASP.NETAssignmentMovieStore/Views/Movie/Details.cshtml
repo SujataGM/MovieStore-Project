@@ -1,0 +1,106 @@
+﻿@model ASP.NETAssignmentMovieStore.Models.Movies
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Movie Details</h1>
+
+<div>
+    <hr />
+    <div class="container h-100">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.Title)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DisplayFor(model => model.Title)
+                    </div>
+                </div>
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.Director)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DisplayFor(model => model.Director)
+                    </div>
+                </div>
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.ReleaseYear)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DisplayFor(model => model.ReleaseYear)
+                    </div>
+                </div>
+
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.Price)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DisplayFor(model => model.Price)
+                    </div>
+                </div>
+
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.Category)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DisplayFor(model => model.Category)
+                    </div>
+                </div>
+
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DisplayFor(model => model.Description)
+                    </div>
+                </div>
+
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.MovieTime)
+                    </div>
+                    <div class="col-sm-5">
+                        @Html.DisplayFor(model => model.MovieTime)
+                    </div>
+                </div>
+
+                <div class="row mb-3 form-group">
+                    <div class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </div>
+                    <div class="col-sm-5">
+                        @Html.DisplayFor(model => model.CreatedAt)
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 row custom-file">
+                <img src="~/@Model.CoverImageURL" asp-append-version="true" />
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a> |
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        <script>
+            $(document).ready(function () {
+                $(".custom-file-input").on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next(".custom-file-input").html(fileName);
+                });
+            });
+        </script>
+    }
+    }

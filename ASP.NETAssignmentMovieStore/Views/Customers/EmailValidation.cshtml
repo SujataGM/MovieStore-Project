@@ -1,0 +1,33 @@
+﻿@model ASP.NETAssignmentMovieStore.Models.Customers
+@{
+    ViewData["Title"] = "EmailValidation";
+}
+
+<h1>Customer Details</h1>
+<hr />
+
+<div class="container">
+    <form asp-controller="Customers" asp-action="EmailValidation">
+        <div class="row mt-3 form-group">
+            <div class="col-4">
+                <label asp-for="EmailAddress" class="col-sm-6 control-lable">Email Address </label>
+            </div>
+            <div class="col-8">
+                <input asp-for="EmailAddress" class="col-md-4 form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>  &nbsp;&nbsp;
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Validate" style="width:100px;" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+           
+        </div>
+    </form>   
+</div>
+
+
+
+
+

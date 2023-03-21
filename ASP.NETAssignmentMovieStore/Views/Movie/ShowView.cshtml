@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNetCore.Http
+@model Cart
+
+@{
+    ViewData["Title"] = "ShowView";
+    var SessionObject = Context.Session.GetString("SessionKeyAddToCart");
+}
+<style>
+    .shope{
+        
+        font-family:'Times New Roman', Times, serif;
+       
+        
+    }
+
+    
+    
+</style>
+
+
+<h1 class="shope text-lg-center" >Shopping cart</h1>
+<hr />
+<div class="tablename">
+<table class="table" style="background-color:#B2FFFF">
+    <thead class="tablen">
+        <tr>
+            <th>
+                Movie Details
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Sub Total
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movieids)
+        {
+            <tr>
+                <td><img src="~/@item.ImageUrl" style="width:80px;height:80px;" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-controller="Movie" asp-action="AddQuantity" asp-route-id="@item.MoviesId" class="btn btn-primary"> + </a>  &nbsp;&nbsp;
+                    @Html.DisplayFor(modelItem => item.Quantity) &nbsp;&nbsp;
+                    <a asp-controller="Movie" asp-action="RemoveQuantity" asp-route-id="@item.MoviesId" class="btn btn-primary">-</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTotal)
+                </td>
+
+                <td>
+                    <a asp-controller="Movie" asp-action="DeleteFromTheCart" asp-route-id="@item.MoviesId" class="btn btn-danger">Remove</a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<hr />
+</div>
+
+
+<div class="row">
+    <div class="col-8"></div>
+    <div class="col-4">
+        <label>Total : @Model.Movieids.Sum(x => x.SubTotal)</label>
+    </div>
+</div>
+
+<div>
+    <div class="row">
+        <div class="text-end">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Continue Shopping</a>
+            <a asp-controller="Customers" asp-action="EmailValidation" class="btn btn-primary " id="btnCheckout">Check Out</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+

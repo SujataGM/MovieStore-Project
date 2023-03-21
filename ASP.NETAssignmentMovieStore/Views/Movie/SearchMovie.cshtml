@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ASP.NETAssignmentMovieStore.Models.Movies>
+
+
+@{
+    ViewData["Title"] = "SearchMovie";
+}
+
+<h1>SearchMovie</h1>
+
+@*<p>
+    <a asp-action="SearchMovie"> MoviesList </a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Movie
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Director
+            </th>
+            <th>
+                ReleaseYear
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                MovieTime
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="~/@item.CoverImageURL" style="width:80px;height:80px;" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieTime)
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
